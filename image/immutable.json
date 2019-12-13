@@ -1,0 +1,45 @@
+{
+"variables": {
+	"proj_id": null,
+	"machine_type": "f1-micro",
+	"source_image": null
+	},
+"builders": [
+	{
+	"type": "googlecompute",
+	"project_id": "{{user `proj_id`}}",
+	"image_name": "test-reddit-base-{{timestamp}}",
+	"source_image": "{{user `source_image`}}",
+	"zone": "europe-north1-b",
+	"ssh_username": "appuser",
+	"machine_type": "{{user `machine_type`}}",
+	"disk_size": "10",
+	"disk_type": "pd-standard",
+	"image_description": "test_image_2019",
+	"network_project_id": "test_network_image_2019",
+	"tags": [ "god", "first-december"]
+	}
+  ],
+  "provisioners": [
+	{
+	"type": "shell",
+	"script": "scripts/install_ruby.sh",
+	"execute_command": "sudo {{.Path}}"
+	},
+	{
+	"type": "shell",
+	"script": "scripts/install_mongodb.sh",
+	"execute_command": "sudo {{.Path}}"
+	},
+	{
+	"type": "file",
+	"source": "./files/reddit.rar",
+	"destination": "/tmp/reddit.rar"
+	},
+	{
+	"type": "shell",
+	"script": "scripts/deploy.sh",
+	"execute_command": "sudo {{.Path}}"
+	}
+  ]
+}
