@@ -4,18 +4,18 @@ provider "google" {
 }
 
 module "app" {
-  source          = "C:/Users/Orderic Vitalinius/infra/terraform/modules/app"
+  source          = "C:/Users/test/infra/terraform/modules/app"
   public_key_path = "${var.public_key_path}"
   app_disk_image  = "${var.app_disk_image}"
 }
 
 module "db" {
-  source          = "C:/Users/Orderic Vitalinius/infra/terraform/modules/db"
+  source          = "C:/Users/test/infra/terraform/modules/db"
   public_key_path = "${var.public_key_path}"
   db_disk_image   = "${var.db_disk_image}"
 }
 
 module "vpc" {
-  source        = "C:/Users/Orderic Vitalinius/infra/terraform/modules/vpc"
+  source        = "C:/Users/test/infra/terraform/modules/vpc"
   source_ranges = "${var.ip_range}"
 }
