@@ -1,5 +1,5 @@
 #!/bin/bash
-gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+gpg --keyserver hkp://keys.gnupg.net --recv-keys $KEY
 curl -sSL https://rvm.io/mpapis.asc | sudo gpg --import -
 curl -sSL https://rvm.io/pkuczynski.asc | sudo gpg --import -
 curl -sSL https://get.rvm.io | bash -s stable
@@ -23,7 +23,7 @@ ps aux | grep puma
 
 gcloud compute instances create --boot-disk-size=10GB --image=ubuntu-1604-xenial-v20170815a --image-project=ubuntu-os-cloud --machine-type=g1-small --tags testscriptorderic-server --restart-on-failure --zone=europe-west1-b reddit-app \ 
 --metadata startup-script='#!/bin/bash
-gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+gpg --keyserver hkp://keys.gnupg.net --recv-keys $KEY
 curl -sSL https://rvm.io/mpapis.asc | sudo gpg --import -
 curl -sSL https://rvm.io/pkuczynski.asc | sudo gpg --import -
 curl -sSL https://get.rvm.io | bash -s stable
